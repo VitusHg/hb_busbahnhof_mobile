@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verkehrsauskunft</title>
+    <style>
+        html, body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #121212;
+            color: #ffffff;
+            overflow: hidden; /* Verhindert das Scrollen der Seite */
+        }
+
+        @media (min-width: 768px) {
+            body {
+                flex-direction: row;
+            }
+        }
+
+        .section {
+            flex: 1;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .iframes-container iframe {
+            width: 100%;
+            height: 48%; /* Fast die Hälfte, mit Abstand dazwischen */
+            border: none;
+            margin-bottom: 4%;
+        }
+
+        .widget-container {
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .widget-container div[data-hfs-widget="true"] {
+            height: 100%;
+            overflow-y: auto;
+        }
+
+        .link-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .link-button {
+            display: block;
+            padding: 10px;
+            background-color: #1e88e5;
+            color: #ffffff;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .link-button:hover {
+            background-color: #1565c0;
+        }
+
+        @media (max-width: 767px) {
+            .iframes-container iframe {
+                height: 45%;
+            }
+
+            .link-buttons {
+                align-items: center;
+            }
+
+            .link-button {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Erstes Drittel -->
+    <div class="section iframes-container">
+        <iframe src="https://fahrplan.oebb.at/bin/stboard.exe/dn?L=vs_scotty.vs_liveticker&evaId=697026&boardType=dep&productsFilter=1011111111011&dirInput=&tickerID=dep&start=yes&eqstops=false&showJourneys=30&additionalTime=0"></iframe>
+        <iframe src="https://fahrplan.oebb.at/bin/stboard.exe/dn?L=vs_scotty.vs_liveticker&evaId=697026&boardType=arr&productsFilter=1011111111011&dirInput=&tickerID=arr&start=yes&eqstops=false&showJourneys=30&additionalTime=0"></iframe>
+    </div>
+
+    <!-- Zweites Drittel -->
+    <div class="section widget-container">
+        <script src="https://fahrplan.oebb.at/webapp/staticfiles/hafas-widget-core.1.0.0.js?language=de_DE"></script>
+        <div data-hfs-widget="true" 
+             data-hfs-widget-cfg-colorscheme="dark" 
+             data-hfs-widget-sq="true" 
+             data-hfs-widget-sq-displaymode="results" 
+             data-hfs-widget-sq-pcls="7167" 
+             data-hfs-widget-sq-maxjny="50" 
+             data-hfs-widget-switches-showlogo="false"
+             data-hfs-widget-sq-location="A=1@O=Hartberg Busbahnhof (Fritz-Stachel-Platz)@X=15973103@Y=47283458@U=181@L=697026@B=1@p=1733743577@" 
+             data-hfs-widget-sq-locationname="Hartberg Busbahnhof" 
+             data-hfs-widget-sq-direction="A=1@O=Gleisdorf Gindlhuber@X=15710088@Y=47114299@U=181@L=617286@B=1@p=1733743577@" 
+             data-hfs-widget-sq-directionname="Graz">
+        </div>
+    </div>
+
+    <!-- Drittes Drittel -->
+    <div class="section link-buttons">
+        <a href="https://verkehrsauskunft.verbundlinie.at/?S=Hartberg%20(Stmk)%20Busbahnhof" class="link-button">Busbahnbim Routenplaner</a>
+        <a href="https://fahrplan.oebb.at/bin/query.exe/" class="link-button">ÖBB Routenplaner alt</a>
+        <a href="https://fahrplan.oebb.at/webapp/?S=Hartberg (Stmk) Busbahnhof" class="link-button">ÖBB Routenplaner neu</a>
+        <a href="https://verkehrsauskunft.verbundlinie.at/?P=SQ&input=Hartberg (Stmk) Busbahnhof" class="link-button">Busbahnbim Monitor</a>
+        <a href="https://shop.oebbtickets.at/de/ticket" class="link-button">ÖBB Tickets</a>
+        <a href="https://verbundlinie.at/de/fahrplan/rund-um-den-fahrplan/verkehrsmeldungen#accordion4" class="link-button">Busbahnbim Verkehrsmeldungen</a>
+    </div>
+</body>
+</html>
